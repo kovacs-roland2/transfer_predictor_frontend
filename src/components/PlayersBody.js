@@ -63,7 +63,7 @@ const PlayersBody = ({ headerValue }) => {
 
   async function getPlayerinfo(e) {
     await fetch(
-      `http://127.0.0.1:8000/api/playerinfo/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${e}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/playerinfo/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${e}`,
       {
         method: "GET",
       }
@@ -75,7 +75,7 @@ const PlayersBody = ({ headerValue }) => {
   async function getRadarplot(e) {
     setRadarplotLoading(true);
     await fetch(
-      `http://127.0.0.1:8000/api/radarplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${e}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/radarplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${e}`,
       {
         method: "GET",
       }
@@ -88,7 +88,7 @@ const PlayersBody = ({ headerValue }) => {
   async function getViolinplot(selectedPlayer, selectedAttribute) {
     setViolinplotLoading(true);
     await fetch(
-      `http://127.0.0.1:8000/api/violinplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayer}&attributum=${selectedAttribute}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/violinplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayer}&attributum=${selectedAttribute}`,
       {
         method: "GET",
       }
@@ -105,7 +105,7 @@ const PlayersBody = ({ headerValue }) => {
   ) {
     setScatterplotLoading(true);
     await fetch(
-      `http://127.0.0.1:8000/api/scatterplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayer}&attr1=${selectedAttribute1}&attr2=${selectedAttribute2}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/scatterplot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayer}&attr1=${selectedAttribute1}&attr2=${selectedAttribute2}`,
       {
         method: "GET",
       }
@@ -130,7 +130,7 @@ const PlayersBody = ({ headerValue }) => {
 
   useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/api/tournament/?tournament=${selectedTournamentPlayers}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/tournament/?tournament=${selectedTournamentPlayers}`,
       {
         method: "GET",
       }
@@ -141,7 +141,7 @@ const PlayersBody = ({ headerValue }) => {
 
   useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/api/players/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/players/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}`,
       {
         method: "GET",
       }
@@ -176,7 +176,7 @@ const PlayersBody = ({ headerValue }) => {
     setSimilarityError(false);
 
     fetch(
-      `http://127.0.0.1:8000/api/similarity_plot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayerPlayers}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/similarity_plot/?tournament=${selectedTournamentPlayers}&team=${selectedTeamPlayers}&position=${selectedPositionPlayers}&name=${selectedPlayerPlayers}`,
       {
         method: "GET",
       }

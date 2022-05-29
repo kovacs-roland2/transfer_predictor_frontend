@@ -29,7 +29,7 @@ const PredictionsBody = () => {
   const [predictionResult, setPredictionResult] = useState("a");
   const handleGetPredicitions = () => {
     fetch(
-      `http://127.0.0.1:8000/api/predictions/?tournament=${selectedTournamentPredictions}&team=${selectedTeamPredictions}&position=${selectedPositionPredictions}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/predictions/?tournament=${selectedTournamentPredictions}&team=${selectedTeamPredictions}&position=${selectedPositionPredictions}`,
       {
         method: "GET",
         headers: {
@@ -49,7 +49,7 @@ const PredictionsBody = () => {
   const [filteredTeamsPred, setFilteredTeamsPred] = useState([]);
   useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/api/tournament/?tournament=${selectedTournamentPredictions}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/tournament/?tournament=${selectedTournamentPredictions}`,
       {
         method: "GET",
       }
