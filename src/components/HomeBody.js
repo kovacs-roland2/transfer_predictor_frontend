@@ -23,7 +23,7 @@ const HomeBody = () => {
   useEffect(() => {
     setLoadingResult(true);
     fetch(
-      `http://127.0.0.1:8000/api/overview/?tournament=${selectedTournament}&position=${tableFilter}`,
+      `${process.env.REACT_APP_API_ORIGIN}/api/overview/?tournament=${selectedTournament}&position=${tableFilter}`,
       {
         method: "GET",
       }
