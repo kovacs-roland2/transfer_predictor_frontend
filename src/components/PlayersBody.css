@@ -1,0 +1,7 @@
+.row {
+  padding-left: "2%";
+  padding-right: "2%";
+  display: "inline-flex";
+  width: "100%";
+  flex-direction: "row";
+}

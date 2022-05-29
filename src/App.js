@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+
+import Header from "./components/Header";
+
+import HomeBody from "./components/HomeBody";
+import PlayersBody from "./components/PlayersBody";
+import PredictionsBody from "./components/PredictionsBody";
 
 function App() {
+  const [headerValue, setHeaderValue] = useState("overview");
+
+  const handleHeader = (e) => {
+    setHeaderValue(e.target.dataset.filter);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header onClick={handleHeader} />
+      {headerValue === "overview" && <HomeBody />}
+      {(headerValue === "players" || headerValue === "similarity") && (
+        <PlayersBody headerValue={headerValue} />
+      )}
+      {headerValue === "predictions" && <PredictionsBody />}
     </div>
   );
 }
