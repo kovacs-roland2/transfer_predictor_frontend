@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 import Table from "react-bootstrap/Table";
+import ReactTooltip from "react-tooltip";
 
 const PredictionsTable = ({
   predictionResult,
@@ -13,7 +16,9 @@ const PredictionsTable = ({
   const metricRowNum = metricKeys.length;
 
   const featureKeys = Object.keys(featureResult[0]);
-  const featureRowNum = featureKeys.length;
+  const featureRowNum = featureResult.length;
+
+  const [tooltip, showTooltip] = useState(true);
 
   return (
     <div style={{ display: "flex", marginTop: "1.5%" }}>
@@ -64,12 +69,22 @@ const PredictionsTable = ({
           <tbody>
             {Array.from({ length: featureRowNum }).map((_, indexRow) => (
               <tr key={indexRow}>
-                <td>{featureKeys[indexRow]}</td>
-                <td>{featureResult[0][featureKeys[indexRow]]}</td>
+                <td
+                  data-tip={featureResult[indexRow][featureKeys[2]]}
+                  onMouseEnter={() => showTooltip(true)}
+                  onMouseLeave={() => {
+                    showTooltip(false);
+                    setTimeout(() => showTooltip(true), 50);
+                  }}
+                >
+                  {featureResult[indexRow][featureKeys[0]]}
+                </td>
+                <td>{featureResult[indexRow][featureKeys[1]]}</td>
               </tr>
             ))}
           </tbody>
         </Table>
+        {tooltip && <ReactTooltip effect="solid" />}
       </div>
     </div>
   );
